@@ -7,11 +7,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    clean: true
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
