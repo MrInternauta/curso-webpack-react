@@ -1,5 +1,7 @@
 const path = require('path');
-const htmlPlugin = require('html-webpack-plugin')
+const htmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -26,6 +28,10 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -35,6 +41,9 @@ module.exports = {
       // INYECTA EL BUNDLE AL TEMPLATE HTML
       template: './public/index.html',
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
     })
   ],
   devServer: {
